@@ -20,17 +20,17 @@
 }
 
 :root{
-  --ink:#0A2036;
-  --depth:#0F3A52;
-  --aqua:#1F8FA6;
-  --aqua-bright:#3BB4C9;
-  --sunlit:#9FE8E0;
-  --sand:#E3A85C;
-  --sand-deep:#C98A3E;
-  --foam:#F4F9F8;
-  --foam-dim:#E4EEEC;
+  --ink:#123449;
+  --depth:#1B4E68;
+  --aqua:#3E90B0;
+  --aqua-bright:#56B6D6;
+  --sunlit:#BEE7F5;
+  --accent:#78C6E8;
+  --accent-strong:#2E7CA6;
+  --foam:#F6FBFD;
+  --foam-dim:#E9F2F6;
   --line-on-dark:rgba(244,249,248,0.16);
-  --line-on-light:rgba(10,32,54,0.12);
+  --line-on-light:rgba(18,52,73,0.12);
 
   --font-display:'Anton', 'Arial Narrow', sans-serif;
   --font-accent:'Fraunces Italic', Georgia, serif;
@@ -92,7 +92,7 @@ h1,h2,h3,p,figure{margin:0;}
   transition:background .4s ease, padding .3s ease, backdrop-filter .4s ease;
 }
 .nav.scrolled{
-  background:rgba(10,32,54,0.82);
+  background:rgba(18,52,73,0.82);
   backdrop-filter:blur(10px);
   padding-top:0.9rem; padding-bottom:0.9rem;
   box-shadow:0 1px 0 var(--line-on-dark);
@@ -133,7 +133,7 @@ h1,h2,h3,p,figure{margin:0;}
   font-size:var(--fs-xs);
   letter-spacing:0.02em;
   color:var(--ink);
-  background:var(--sand);
+  background:var(--accent);
   border:none;
   padding:0.7rem 1.3rem;
   border-radius:999px;
@@ -169,8 +169,8 @@ h1,h2,h3,p,figure{margin:0;}
 .hero-scrim{
   position:absolute; inset:0;
   background:
-    linear-gradient(to top, rgba(6,17,29,0.92) 0%, rgba(6,17,29,0.55) 32%, rgba(6,17,29,0.08) 58%, rgba(6,17,29,0.3) 100%),
-    linear-gradient(to right, rgba(6,17,29,0.35) 0%, transparent 30%);
+    linear-gradient(to top, rgba(18,52,73,0.86) 0%, rgba(18,52,73,0.46) 32%, rgba(18,52,73,0.06) 58%, rgba(18,52,73,0.22) 100%),
+    linear-gradient(to right, rgba(18,52,73,0.28) 0%, transparent 30%);
   pointer-events:none;
 }
 .hero-inner{
@@ -229,7 +229,7 @@ h1,h2,h3,p,figure{margin:0;}
   transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
   border:1.5px solid transparent;
 }
-.btn-solid{ background:var(--sand); color:var(--ink); }
+.btn-solid{ background:var(--accent); color:var(--ink); }
 .btn-solid:hover{ background:var(--sunlit); transform:translateY(-2px); }
 .btn-outline{ border-color:rgba(244,249,248,0.5); color:var(--foam); background:transparent; }
 .btn-outline:hover{ border-color:var(--foam); background:rgba(244,249,248,0.08); transform:translateY(-2px); }
@@ -272,7 +272,7 @@ section{ position:relative; }
 }
 .trust-item .label{
   display:block; margin-top:0.5rem;
-  font-size:var(--fs-xs); color:rgba(10,32,54,0.65);
+  font-size:var(--fs-xs); color:rgba(18,52,73,0.65);
   max-width:20ch;
 }
 
@@ -292,7 +292,7 @@ section{ position:relative; }
 }
 .section-head p{
   max-width:38ch;
-  color:rgba(10,32,54,0.68);
+  color:rgba(18,52,73,0.68);
   font-size:var(--fs-md);
   font-weight:300;
 }
@@ -346,10 +346,10 @@ section{ position:relative; }
   font-size:var(--fs-xs); font-weight:700; letter-spacing:0.02em;
   color:var(--foam);
 }
-.prog-card.feature::before{ background:linear-gradient(160deg, #0B2C3E 0%, #0F4C5C 55%, #167E92 100%); }
-.prog-card.c2::before{ background:linear-gradient(160deg, #0F3A52 0%, #17607A 100%); }
-.prog-card.c3::before{ background:linear-gradient(160deg, #123249 0%, #1B5064 100%); }
-.prog-card.c4::before{ background:linear-gradient(160deg, #0A2036 0%, #123A52 100%); }
+.prog-card.feature::before{ background:linear-gradient(160deg, #17435C 0%, #1F5C72 55%, #4CA6C0 100%); }
+.prog-card.c2::before{ background:linear-gradient(160deg, #1B4E68 0%, #3E90B0 100%); }
+.prog-card.c3::before{ background:linear-gradient(160deg, #1B435A 0%, #2F6E88 100%); }
+.prog-card.c4::before{ background:linear-gradient(160deg, #123449 0%, #1B4E68 100%); }
 
 /* ---------- PHILOSOPHY ---------- */
 .philosophy{
@@ -382,7 +382,7 @@ section{ position:relative; }
 .philosophy-copy p + p{ margin-top:1rem; }
 .philo-figure{
   position:relative; border-radius:20px; overflow:hidden;
-  aspect-ratio:4/5; background:linear-gradient(160deg,#0F3A52,#1F8FA6);
+  aspect-ratio:4/5; background:linear-gradient(160deg,#1B4E68,#3E90B0);
 }
 .philo-figure canvas{ position:absolute; inset:0; width:100%; height:100%; }
 
@@ -399,7 +399,7 @@ section{ position:relative; }
   padding:2rem;
   display:flex; flex-direction:column; gap:1.2rem;
 }
-.t-stars{ color:var(--sand-deep); font-size:var(--fs-sm); letter-spacing:0.15em; }
+.t-stars{ color:var(--accent-strong); font-size:var(--fs-sm); letter-spacing:0.15em; }
 .t-card p{ font-size:var(--fs-base); color:var(--ink); font-weight:400; line-height:1.65; }
 .t-who{ display:flex; align-items:center; gap:0.8rem; margin-top:auto; }
 .t-avatar{
@@ -410,7 +410,7 @@ section{ position:relative; }
   flex-shrink:0;
 }
 .t-who .name{ font-size:var(--fs-xs); font-weight:700; }
-.t-who .meta{ font-size:var(--fs-2xs); color:rgba(10,32,54,0.55); }
+.t-who .meta{ font-size:var(--fs-2xs); color:rgba(18,52,73,0.55); }
 
 /* ---------- LOCATIONS ---------- */
 .locations-grid{
@@ -426,7 +426,7 @@ section{ position:relative; }
   display:flex; flex-direction:column; justify-content:space-between;
   transition:border-color .2s ease, background .2s ease;
 }
-.loc-card:hover{ border-color:var(--sunlit); background:rgba(159,232,224,0.05); }
+.loc-card:hover{ border-color:var(--sunlit); background:rgba(190,231,245,0.06); }
 .loc-card .eyebrow{ color:var(--sunlit); }
 .loc-card h4{
   font-family:var(--font-display);
@@ -704,7 +704,7 @@ footer .foot-links a:hover{ color:var(--foam); }
 
     function pFrame(ts){
       var g = pctx.createLinearGradient(0,0,pw,ph2);
-      g.addColorStop(0,'#0F3A52'); g.addColorStop(1,'#1F8FA6');
+      g.addColorStop(0,'#1B4E68'); g.addColorStop(1,'#3E90B0');
       pctx.fillStyle = g; pctx.fillRect(0,0,pw,ph2);
       pctx.save();
       pctx.globalCompositeOperation = 'lighter';
@@ -712,8 +712,8 @@ footer .foot-links a:hover{ color:var(--foam); }
         var phase = ts*0.0001 + i*2.1;
         var x = (Math.sin(phase)*0.5+0.5)*pw;
         var grad = pctx.createLinearGradient(x,-20,x+40,ph2);
-        grad.addColorStop(0,'rgba(159,232,224,0.16)');
-        grad.addColorStop(1,'rgba(159,232,224,0)');
+        grad.addColorStop(0,'rgba(190,231,245,0.18)');
+        grad.addColorStop(1,'rgba(190,231,245,0)');
         pctx.fillStyle = grad;
         pctx.beginPath();
         pctx.moveTo(x,-20); pctx.lineTo(x+70,-20); pctx.lineTo(x+10,ph2); pctx.lineTo(x-60,ph2);
