@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Water palette — locked from the approved concept */
+  --color-ink: #123449;
+  --color-depth: #1b4e68;
+  --color-aqua: #3e90b0;
+  --color-aqua-bright: #56b6d6;
+  --color-sunlit: #bee7f5;
+  --color-accent: #78c6e8;
+  --color-accent-strong: #2e7ca6;
+  --color-foam: #dff1fa;
+  /* foam-dim is a plain white card surface; named for continuity with the approved concept */
+  --color-foam-dim: #ffffff;
+  --color-line-on-dark: rgba(244, 249, 248, 0.16);
+  --color-line-on-light: rgba(18, 52, 73, 0.12);
+
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-accent: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-libre-franklin), -apple-system, sans-serif;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.6rem;
+  --text-xl: clamp(2rem, 3.4vw, 2.9rem);
+  --text-2xl: clamp(2.6rem, 5vw, 4.6rem);
+  --text-hero: clamp(3.2rem, 9.4vw, 8.4rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-foam);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sunlit);
+  outline-offset: 3px;
+}
+
+@keyframes scrollpulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
