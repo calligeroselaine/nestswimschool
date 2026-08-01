@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import Button from "./Button";
 import { programs } from "@/lib/data/programs";
 import { locations } from "@/lib/data/locations";
 
@@ -10,6 +12,7 @@ const linkClass =
   "text-xs font-semibold tracking-wide opacity-90 transition-opacity hover:opacity-100";
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"programs" | "locations" | null>(null);
@@ -22,13 +25,16 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    if (!mobileOpen) return;
+    if (!mobileOpen && !openMenu) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false);
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        setOpenMenu(null);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mobileOpen]);
+  }, [mobileOpen, openMenu]);
 
   return (
     <nav
@@ -68,16 +74,24 @@ export default function Nav() {
           </button>
           {openMenu === "programs" && (
             <ul className="absolute top-full left-0 mt-3 w-64 rounded-2xl border border-line-on-dark bg-ink/95 p-2 shadow-xl backdrop-blur-md">
-              {programs.map((program) => (
-                <li key={program.slug}>
-                  <Link
-                    href={`/programs/${program.slug}`}
-                    className="block rounded-xl px-3 py-2.5 text-xs font-semibold text-foam/90 no-underline transition-colors hover:bg-foam/10 hover:text-foam"
-                  >
-                    {program.shortName}
-                  </Link>
-                </li>
-              ))}
+              {programs.map((program) => {
+                const href = `/programs/${program.slug}`;
+                const active = pathname === href;
+                return (
+                  <li key={program.slug}>
+                    <Link
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                      className={clsx(
+                        "block rounded-xl px-3 py-2.5 text-xs font-semibold no-underline transition-colors hover:bg-foam/10 hover:text-foam",
+                        active ? "bg-foam/10 text-foam" : "text-foam/90",
+                      )}
+                    >
+                      {program.shortName}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </li>
@@ -112,16 +126,24 @@ export default function Nav() {
           </button>
           {openMenu === "locations" && (
             <ul className="absolute top-full left-0 mt-3 w-56 rounded-2xl border border-line-on-dark bg-ink/95 p-2 shadow-xl backdrop-blur-md">
-              {locations.map((location) => (
-                <li key={location.slug}>
-                  <Link
-                    href={`/locations/${location.slug}`}
-                    className="block rounded-xl px-3 py-2.5 text-xs font-semibold text-foam/90 no-underline transition-colors hover:bg-foam/10 hover:text-foam"
-                  >
-                    {location.name}
-                  </Link>
-                </li>
-              ))}
+              {locations.map((location) => {
+                const href = `/locations/${location.slug}`;
+                const active = pathname === href;
+                return (
+                  <li key={location.slug}>
+                    <Link
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                      className={clsx(
+                        "block rounded-xl px-3 py-2.5 text-xs font-semibold no-underline transition-colors hover:bg-foam/10 hover:text-foam",
+                        active ? "bg-foam/10 text-foam" : "text-foam/90",
+                      )}
+                    >
+                      {location.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </li>
@@ -139,12 +161,9 @@ export default function Nav() {
       </ul>
 
       <div className="flex items-center gap-3">
-        <Link
-          href="/#enquire"
-          className="rounded-full bg-accent px-5 py-[0.7rem] text-xs font-bold whitespace-nowrap text-ink no-underline transition-[background,transform] hover:-translate-y-px hover:bg-sunlit"
-        >
+        <Button href="/#enquire" size="sm">
           Book a Free Trial
-        </Link>
+        </Button>
         <button
           type="button"
           className="grid h-9 w-9 place-items-center rounded-full border border-foam/30 text-foam md:hidden"
@@ -163,16 +182,24 @@ export default function Nav() {
           className="absolute top-full right-0 left-0 flex flex-col gap-1 border-t border-line-on-dark bg-ink/97 p-5 backdrop-blur-md md:hidden"
         >
           <MobileSection title="Programs">
-            {programs.map((program) => (
-              <Link
-                key={program.slug}
-                href={`/programs/${program.slug}`}
-                className="block rounded-lg px-3 py-2 text-sm text-foam/85 no-underline hover:bg-foam/10"
-                onClick={() => setMobileOpen(false)}
-              >
-                {program.shortName}
-              </Link>
-            ))}
+            {programs.map((program) => {
+              const href = `/programs/${program.slug}`;
+              const active = pathname === href;
+              return (
+                <Link
+                  key={program.slug}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={clsx(
+                    "block rounded-lg px-3 py-2 text-sm no-underline hover:bg-foam/10",
+                    active ? "font-semibold text-foam" : "text-foam/85",
+                  )}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {program.shortName}
+                </Link>
+              );
+            })}
           </MobileSection>
           <Link
             href="/#team"
@@ -189,16 +216,24 @@ export default function Nav() {
             Prices
           </Link>
           <MobileSection title="Locations">
-            {locations.map((location) => (
-              <Link
-                key={location.slug}
-                href={`/locations/${location.slug}`}
-                className="block rounded-lg px-3 py-2 text-sm text-foam/85 no-underline hover:bg-foam/10"
-                onClick={() => setMobileOpen(false)}
-              >
-                {location.name}
-              </Link>
-            ))}
+            {locations.map((location) => {
+              const href = `/locations/${location.slug}`;
+              const active = pathname === href;
+              return (
+                <Link
+                  key={location.slug}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={clsx(
+                    "block rounded-lg px-3 py-2 text-sm no-underline hover:bg-foam/10",
+                    active ? "font-semibold text-foam" : "text-foam/85",
+                  )}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {location.name}
+                </Link>
+              );
+            })}
           </MobileSection>
           <a
             href="https://swimnest.ud.io"

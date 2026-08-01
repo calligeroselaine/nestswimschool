@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="flex flex-wrap items-start justify-between gap-8 border-t border-line-on-dark bg-ink px-5 py-10 text-2xs text-foam/55 md:px-14">
       <div className="flex flex-col gap-2">
         <span className="font-display text-base text-foam uppercase">SwimNest</span>
-        <p className="max-w-[26ch] text-foam/50">
+        <p className="max-w-[26ch] text-foam/70">
           Small classes. Big confidence. Swim lessons across Sydney&rsquo;s Northern Beaches.
         </p>
       </div>
@@ -58,7 +58,7 @@ export default function Footer() {
         </FooterColumn>
       </div>
 
-      <span className="text-foam/45">&copy; {new Date().getFullYear()} SwimNest Swim School</span>
+      <span className="text-foam/70">&copy; {new Date().getFullYear()} SwimNest Swim School</span>
     </footer>
   );
 }

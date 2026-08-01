@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Reveal from "./Reveal";
+import Section from "./Section";
 
 export default function PhilosophyBand() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -89,8 +90,11 @@ export default function PhilosophyBand() {
   }, []);
 
   return (
-    <section id="philosophy" className="bg-depth">
-      <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-5 py-[clamp(4.5rem,9vw,7.5rem)] md:px-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+    <Section
+      id="philosophy"
+      tone="depth"
+      innerClassName="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20"
+    >
         <div>
           <Reveal>
             <p className="mb-6 flex items-center gap-[0.6em] text-2xs font-bold tracking-[0.16em] text-sunlit uppercase before:h-px before:w-7 before:bg-current before:opacity-60">
@@ -132,7 +136,6 @@ export default function PhilosophyBand() {
             <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
           </div>
         </Reveal>
-      </div>
-    </section>
+    </Section>
   );
 }

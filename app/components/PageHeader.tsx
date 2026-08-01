@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Reveal from "./Reveal";
+import Button from "./Button";
 
 export default function PageHeader({
   eyebrow,
@@ -20,12 +20,9 @@ export default function PageHeader({
           {title}
         </h1>
         <p className="mt-4 max-w-[46ch] text-md font-light text-foam/80">{tagline}</p>
-        <Link
-          href="/#enquire"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-[0.95rem] text-sm font-bold text-ink no-underline transition-[background,transform] hover:-translate-y-0.5 hover:bg-sunlit"
-        >
+        <Button href="/#enquire" className="mt-8">
           Book a Free Trial
-        </Link>
+        </Button>
       </Reveal>
     </header>
   );

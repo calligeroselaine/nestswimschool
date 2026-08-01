@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { programs } from "@/lib/data/programs";
 import { locations } from "@/lib/data/locations";
-
-const siteUrl = "https://nestswimschool.vercel.app";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

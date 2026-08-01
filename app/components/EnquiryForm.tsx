@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { cloneElement, isValidElement, useState, type ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Button from "./Button";
 import { programs } from "@/lib/data/programs";
 
 const formSchema = z.object({
@@ -18,7 +19,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const inputClass =
-  "w-full rounded-xl border border-line-on-dark bg-foam/5 px-4 py-3 text-sm text-foam placeholder:text-foam/40 outline-none transition-colors focus:border-sunlit";
+  "w-full rounded-xl border border-line-on-dark bg-foam/5 px-4 py-3 text-sm text-foam placeholder:text-foam/40 outline-none transition-colors focus:border-sunlit aria-invalid:border-red-300";
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -78,19 +79,19 @@ export default function EnquiryForm() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Your name" error={errors.name?.message}>
+        <Field name="name" label="Your name" error={errors.name?.message}>
           <input className={inputClass} autoComplete="name" {...register("name")} />
         </Field>
-        <Field label="Email" error={errors.email?.message}>
+        <Field name="email" label="Email" error={errors.email?.message}>
           <input type="email" className={inputClass} autoComplete="email" {...register("email")} />
         </Field>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Phone (optional)" error={errors.phone?.message}>
+        <Field name="phone" label="Phone (optional)" error={errors.phone?.message}>
           <input type="tel" className={inputClass} autoComplete="tel" {...register("phone")} />
         </Field>
-        <Field label="Program you're interested in" error={errors.program?.message}>
+        <Field name="program" label="Program you're interested in" error={errors.program?.message}>
           <select className={inputClass} defaultValue="" {...register("program")}>
             <option value="" className="text-ink">
               Not sure yet
@@ -104,7 +105,7 @@ export default function EnquiryForm() {
         </Field>
       </div>
 
-      <Field label="Tell us about your swimmer" error={errors.message?.message}>
+      <Field name="message" label="Tell us about your swimmer" error={errors.message?.message}>
         <textarea
           rows={4}
           className={inputClass}
@@ -119,34 +120,45 @@ export default function EnquiryForm() {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-[0.95rem] text-sm font-bold text-ink transition-[background,transform] hover:-translate-y-0.5 hover:bg-sunlit disabled:cursor-not-allowed disabled:opacity-60"
-      >
+      <p className="text-xs text-foam/55">
+        By submitting this form you agree to be contacted by SwimNest about your enquiry. Your
+        details are only ever used to get back to you.
+      </p>
+
+      <Button type="submit" disabled={isSubmitting} className="mt-2">
         {isSubmitting ? "Sending…" : "Send Enquiry"}
-      </button>
+      </Button>
     </form>
   );
 }
 
 function Field({
+  name,
   label,
   error,
   children,
 }: {
+  name: string;
   label: string;
   error?: string;
-  children: React.ReactNode;
+  children: ReactElement<Record<string, unknown>>;
 }) {
+  const errorId = `${name}-error`;
+  const field = isValidElement(children)
+    ? cloneElement(children, {
+        "aria-invalid": error ? true : undefined,
+        "aria-describedby": error ? errorId : undefined,
+      })
+    : children;
+
   return (
     <label className="block">
       <span className="mb-1.5 block text-2xs font-bold tracking-[0.08em] text-foam/70 uppercase">
         {label}
       </span>
-      {children}
+      {field}
       {error && (
-        <span role="alert" className="mt-1 block text-xs text-red-300">
+        <span id={errorId} role="alert" className="mt-1 block text-xs text-red-300">
           {error}
         </span>
       )}

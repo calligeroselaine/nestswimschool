@@ -1,11 +1,12 @@
-import Link from "next/link";
 import Reveal from "./Reveal";
+import Button from "./Button";
+import Section from "./Section";
 import EnquiryForm from "./EnquiryForm";
 
 export default function ClosingCta() {
   return (
-    <section id="enquire" className="bg-depth text-center">
-      <Reveal className="mx-auto max-w-[1180px] px-5 py-[clamp(4.5rem,9vw,7.5rem)] md:px-14">
+    <Section id="enquire" tone="depth" className="text-center">
+      <Reveal>
         <p className="flex items-center justify-center gap-[0.6em] text-2xs font-bold tracking-[0.16em] text-sunlit uppercase before:h-px before:w-7 before:bg-current before:opacity-60">
           Begin the journey
         </p>
@@ -17,21 +18,13 @@ export default function ClosingCta() {
           supported step at a time.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-4">
-          <Link
-            href="#enquiry-form"
-            className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-transparent bg-accent px-7 py-[0.95rem] text-sm font-bold text-ink no-underline transition-[background,transform] hover:-translate-y-0.5 hover:bg-sunlit"
-          >
-            Book a Free Trial
-          </Link>
-          <Link
-            href="#prices"
-            className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-foam/50 bg-transparent px-7 py-[0.95rem] text-sm font-bold text-foam no-underline transition-[background,border-color,transform] hover:-translate-y-0.5 hover:border-foam hover:bg-foam/8"
-          >
+          <Button href="#enquiry-form">Book a Free Trial</Button>
+          <Button href="#prices" variant="outline">
             View Prices &amp; Programs
-          </Link>
+          </Button>
         </div>
         <EnquiryForm />
       </Reveal>
-    </section>
+    </Section>
   );
 }

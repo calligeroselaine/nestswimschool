@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import Button from "./Button";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -34,7 +34,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       >
         <source src="/video/hero.mp4" type="video/mp4" />
@@ -69,18 +69,10 @@ export default function Hero() {
           personalised swim instruction that turns hesitation into a lifelong love of the water.
         </p>
         <div className="mt-9 flex flex-wrap gap-4">
-          <Link
-            href="#enquire"
-            className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-transparent bg-accent px-7 py-[0.95rem] text-sm font-bold text-ink no-underline transition-[background,transform] hover:-translate-y-0.5 hover:bg-sunlit"
-          >
-            Book a Free Trial
-          </Link>
-          <Link
-            href="#programs"
-            className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-foam/50 bg-transparent px-7 py-[0.95rem] text-sm font-bold text-foam no-underline transition-[background,border-color,transform] hover:-translate-y-0.5 hover:border-foam hover:bg-foam/8"
-          >
+          <Button href="#enquire">Book a Free Trial</Button>
+          <Button href="#programs" variant="outline">
             Explore Programs
-          </Link>
+          </Button>
         </div>
       </div>
 

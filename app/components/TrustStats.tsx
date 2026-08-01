@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import Section from "./Section";
 
 const stats = [
   { num: "16+", label: "Years of coaching experience, led by our head coach Irina" },
@@ -9,8 +10,8 @@ const stats = [
 
 export default function TrustStats() {
   return (
-    <section className="bg-foam">
-      <Reveal className="mx-auto grid max-w-[1180px] grid-cols-2 gap-8 px-5 py-10 md:grid-cols-4 md:px-14">
+    <Section innerClassName="py-10">
+      <Reveal className="grid grid-cols-2 gap-8 md:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="border-l border-line-on-light pl-5 text-left">
             <span className="font-display text-[clamp(2rem,3.6vw,2.9rem)] leading-none text-aqua tabular-nums">
@@ -20,6 +21,6 @@ export default function TrustStats() {
           </div>
         ))}
       </Reveal>
-    </section>
+    </Section>
   );
 }

@@ -3,9 +3,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { locations, getLocationBySlug } from "@/lib/data/locations";
 import { programs } from "@/lib/data/programs";
+import { SITE_URL } from "@/lib/site";
 import PageHeader from "@/app/components/PageHeader";
 import Reveal from "@/app/components/Reveal";
+import Section from "@/app/components/Section";
 import LocationJsonLd from "@/app/components/JsonLd";
+import BreadcrumbJsonLd from "@/app/components/BreadcrumbJsonLd";
+import Button from "@/app/components/Button";
 
 import TerreyHillsContent from "../_content/locations-terrey-hills";
 import BrookvaleContent from "../_content/locations-brookvale";
@@ -31,9 +35,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const location = getLocationBySlug(slug);
   if (!location) return {};
+  const url = `${SITE_URL}/locations/${location.slug}`;
   return {
     title: location.name,
     description: location.cardDescription,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${location.name} | SwimNest`,
+      description: location.cardDescription,
+      url,
+    },
+    twitter: {
+      title: `${location.name} | SwimNest`,
+      description: location.cardDescription,
+    },
   };
 }
 
@@ -57,11 +72,18 @@ export default async function LocationPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Locations", url: `${SITE_URL}/#locations` },
+          { name: location.name, url: `${SITE_URL}/locations/${location.slug}` },
+        ]}
+      />
       {location.address && (
         <LocationJsonLd
           name={location.name}
           address={location.address}
-          url={`https://nestswimschool.vercel.app/locations/${location.slug}`}
+          url={`${SITE_URL}/locations/${location.slug}`}
         />
       )}
       <PageHeader
@@ -70,57 +92,52 @@ export default async function LocationPage({
         tagline={location.cardDescription}
       />
 
-      <section className="bg-foam">
-        <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 py-[clamp(4.5rem,9vw,7.5rem)] md:px-14 lg:grid-cols-[1.3fr_1fr]">
-          <Reveal className="space-y-4 text-base font-light text-ink/80">
-            {Content && <Content />}
-          </Reveal>
+      <Section innerClassName="grid grid-cols-1 gap-12 pb-0 lg:grid-cols-[1.3fr_1fr]">
+        <Reveal className="space-y-4 text-base font-light text-ink/80">
+          {Content && <Content />}
+        </Reveal>
 
-          <Reveal className="space-y-6">
-            {location.address && (
-              <div>
-                <h2 className="mb-3 text-2xs font-bold tracking-[0.14em] text-aqua-bright uppercase">
-                  Address
-                </h2>
-                <p className="text-sm text-ink/80">
-                  {location.address.street}
-                  <br />
-                  {location.address.suburb} {location.address.state} {location.address.postcode}
-                </p>
-              </div>
-            )}
+        <Reveal className="space-y-6">
+          {location.address && (
+            <div>
+              <h2 className="mb-3 text-2xs font-bold tracking-[0.14em] text-aqua-bright uppercase">
+                Address
+              </h2>
+              <p className="text-sm text-ink/80">
+                {location.address.street}
+                <br />
+                {location.address.suburb} {location.address.state} {location.address.postcode}
+              </p>
+            </div>
+          )}
 
-            {offeredPrograms.length > 0 && (
-              <div>
-                <h2 className="mb-3 text-2xs font-bold tracking-[0.14em] text-aqua-bright uppercase">
-                  Programs here
-                </h2>
-                <ul className="flex flex-wrap gap-2">
-                  {offeredPrograms.map((program) => (
-                    <li key={program.slug}>
-                      <Link
-                        href={`/programs/${program.slug}`}
-                        className="inline-block rounded-full border border-line-on-light px-4 py-2 text-xs font-semibold text-ink no-underline transition-colors hover:border-accent-strong hover:text-accent-strong"
-                      >
-                        {program.shortName}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          {offeredPrograms.length > 0 && (
+            <div>
+              <h2 className="mb-3 text-2xs font-bold tracking-[0.14em] text-aqua-bright uppercase">
+                Programs here
+              </h2>
+              <ul className="flex flex-wrap gap-2">
+                {offeredPrograms.map((program) => (
+                  <li key={program.slug}>
+                    <Link
+                      href={`/programs/${program.slug}`}
+                      className="inline-block rounded-full border border-line-on-light px-4 py-2 text-xs font-semibold text-ink no-underline transition-colors hover:border-accent-strong hover:text-accent-strong"
+                    >
+                      {program.shortName}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-            <Link
-              href="/#enquire"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-[0.95rem] text-sm font-bold text-ink no-underline transition-[background,transform] hover:-translate-y-0.5 hover:bg-sunlit"
-            >
-              Book a Free Trial
-            </Link>
-          </Reveal>
-        </div>
+          <Button href="/#enquire">Book a Free Trial</Button>
+        </Reveal>
+      </Section>
 
-        {mapQuery && (
-          <div className="mx-auto max-w-[1180px] px-5 pb-[clamp(4.5rem,9vw,7.5rem)] md:px-14">
+      {mapQuery && (
+        <div className="bg-foam px-5 pb-[clamp(4.5rem,9vw,7.5rem)] md:px-14">
+          <div className="mx-auto max-w-[1180px]">
             <iframe
               title={`Map showing ${location.name}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`}
@@ -129,8 +146,8 @@ export default async function LocationPage({
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-        )}
-      </section>
+        </div>
+      )}
     </>
   );
 }
