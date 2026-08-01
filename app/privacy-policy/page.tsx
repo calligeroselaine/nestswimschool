@@ -90,8 +90,10 @@ export default function PrivacyPolicyPage() {
           <p className={p}>
             You can ask us what personal information we hold about you, request a correction, or
             make a privacy complaint by contacting us at{" "}
-            <strong className="text-ink">[CLIENT TO CONFIRM — contact email or phone]</strong>. If
-            you&rsquo;re not satisfied with our response, you can contact the{" "}
+            <a href="mailto:Irina@swimnest.com.au" className="text-accent-strong underline">
+              Irina@swimnest.com.au
+            </a>
+            . If you&rsquo;re not satisfied with our response, you can contact the{" "}
             <a
               href="https://www.oaic.gov.au/"
               target="_blank"

@@ -90,7 +90,10 @@ export default function TermsPage() {
           <h2 className={h2}>Contact</h2>
           <p className={p}>
             Questions about these terms can be sent to{" "}
-            <strong className="text-ink">[CLIENT TO CONFIRM — contact email or phone]</strong>.
+            <a href="mailto:Irina@swimnest.com.au" className="text-accent-strong underline">
+              Irina@swimnest.com.au
+            </a>
+            .
           </p>
         </Reveal>
       </Section>
