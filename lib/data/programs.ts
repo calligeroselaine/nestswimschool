@@ -16,6 +16,7 @@ export type Program = {
   /** Short "from" price for the homepage summary row — falls back to pricing[0] if omitted. */
   fromPrice?: string;
   featured?: boolean;
+  image: string;
 };
 
 export const programs: Program[] = [
@@ -32,6 +33,7 @@ export const programs: Program[] = [
     pricing: [],
     pricingNote: "Pricing on enquiry — get in touch for current rates.",
     featured: true,
+    image: "/images/programs/classes-ocean-skills.jpg",
   },
   {
     slug: "private-classes",
@@ -54,6 +56,7 @@ export const programs: Program[] = [
     ],
     pricingNote: "“Shared” (semi-private) pricing is per swimmer, for two swimmers of a similar level.",
     fromPrice: "From $70 / session",
+    image: "/images/programs/private-classes.jpg",
   },
   {
     slug: "group-classes",
@@ -66,6 +69,7 @@ export const programs: Program[] = [
     audience:
       "Small, level-matched groups — class size and lesson length vary by skill level and location.",
     pricing: [{ label: "Per term (12 weeks)", price: "$360" }],
+    image: "/images/programs/group-classes.jpg",
   },
   {
     slug: "classes-holiday-intensive",
@@ -81,6 +85,7 @@ export const programs: Program[] = [
       { label: "4 × 20 min lessons", price: "$200" },
       { label: "4 × 30 min lessons", price: "$250" },
     ],
+    image: "/images/programs/classes-holiday-intensive.jpg",
   },
   {
     slug: "classes-stroke-correction",
@@ -93,6 +98,7 @@ export const programs: Program[] = [
       "For adults who can already swim and want expert eyes on technique, efficiency and confidence in the water.",
     pricing: [],
     pricingNote: "Pricing on enquiry — get in touch for current rates.",
+    image: "/images/programs/classes-stroke-correction.jpg",
   },
 ];
 

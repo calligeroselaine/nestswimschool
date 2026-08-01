@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { programs, getProgramBySlug } from "@/lib/data/programs";
 import { locations } from "@/lib/data/locations";
@@ -79,7 +80,22 @@ export default async function ProgramPage({
       />
       <PageHeader eyebrow={program.tag} title={program.name} tagline={program.tagline} />
 
-      <Section innerClassName="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr]">
+      <Section innerClassName="pb-0">
+        <Reveal>
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px]">
+            <Image
+              src={program.image}
+              alt={`${program.shortName} — SwimNest`}
+              fill
+              sizes="(min-width: 1024px) 1180px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section innerClassName="grid grid-cols-1 gap-12 pt-10 lg:grid-cols-[1.3fr_1fr]">
         <Reveal className="space-y-4 text-base font-light text-ink/80">
           <p className="text-lg text-ink">{program.audience}</p>
           {Content && <Content />}
