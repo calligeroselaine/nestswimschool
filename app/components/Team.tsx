@@ -18,7 +18,13 @@ export default function Team() {
 
       <Reveal className="grid grid-cols-1 gap-5 sm:grid-cols-3">
         {team.map((member) => (
-          <TeamProfile key={member.name} name={member.name} role={member.role} bio={member.bio} />
+          <TeamProfile
+            key={member.name}
+            name={member.name}
+            role={member.role}
+            bio={member.bio}
+            photo={member.photo}
+          />
         ))}
       </Reveal>
     </Section>

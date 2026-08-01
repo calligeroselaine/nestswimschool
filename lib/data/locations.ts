@@ -14,6 +14,7 @@ export type Location = {
   description: string;
   address?: Address;
   programSlugs: string[];
+  image: string;
 };
 
 export const locations: Location[] = [
@@ -38,6 +39,7 @@ export const locations: Location[] = [
       "classes-holiday-intensive",
       "classes-stroke-correction",
     ],
+    image: "/images/locations/terrey-hills.webp",
   },
   {
     slug: "locations-brookvale",
@@ -54,6 +56,7 @@ export const locations: Location[] = [
       postcode: "2100",
     },
     programSlugs: ["private-classes", "group-classes"],
+    image: "/images/locations/brookvale.webp",
   },
   {
     slug: "locations-rockpools",
@@ -64,6 +67,7 @@ export const locations: Location[] = [
     description:
       "Seasonal lessons at Northern Beaches ocean rockpools — the natural next step for swimmers building open-water confidence.",
     programSlugs: ["private-classes", "classes-ocean-skills"],
+    image: "/images/locations/rockpools.webp",
   },
   {
     slug: "locations-residential",
@@ -74,6 +78,7 @@ export const locations: Location[] = [
     description:
       "Private and semi-private lessons held at your home pool — focused, personalised instruction in a relaxed, familiar setting.",
     programSlugs: ["private-classes"],
+    image: "/images/locations/residential.webp",
   },
 ];
 

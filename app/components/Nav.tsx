@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -16,6 +16,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"programs" | "locations" | null>(null);
+  const desktopNavRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -23,6 +24,19 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close an open dropdown on outside click — clicking the toggle button or a
+  // link inside the dropdown is handled separately via their own onClick.
+  useEffect(() => {
+    if (!openMenu) return;
+    const onClickOutside = (e: MouseEvent) => {
+      if (desktopNavRef.current && !desktopNavRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [openMenu]);
 
   useEffect(() => {
     if (!mobileOpen && !openMenu) return;
@@ -54,12 +68,8 @@ export default function Nav() {
         </small>
       </Link>
 
-      <ul className="hidden items-center gap-6 md:flex lg:gap-8">
-        <li
-          className="relative"
-          onMouseEnter={() => setOpenMenu("programs")}
-          onMouseLeave={() => setOpenMenu(null)}
-        >
+      <ul ref={desktopNavRef} className="hidden items-center gap-6 md:flex lg:gap-8">
+        <li className="relative" onMouseEnter={() => setOpenMenu("programs")}>
           <button
             type="button"
             className={clsx(linkClass, "flex cursor-pointer items-center gap-1 bg-transparent")}
@@ -86,6 +96,7 @@ export default function Nav() {
                         "block rounded-xl px-3 py-2.5 text-xs font-semibold no-underline transition-colors hover:bg-foam/10 hover:text-foam",
                         active ? "bg-foam/10 text-foam" : "text-foam/90",
                       )}
+                      onClick={() => setOpenMenu(null)}
                     >
                       {program.shortName}
                     </Link>
@@ -107,11 +118,7 @@ export default function Nav() {
           </Link>
         </li>
 
-        <li
-          className="relative"
-          onMouseEnter={() => setOpenMenu("locations")}
-          onMouseLeave={() => setOpenMenu(null)}
-        >
+        <li className="relative" onMouseEnter={() => setOpenMenu("locations")}>
           <button
             type="button"
             className={clsx(linkClass, "flex cursor-pointer items-center gap-1 bg-transparent")}
@@ -138,6 +145,7 @@ export default function Nav() {
                         "block rounded-xl px-3 py-2.5 text-xs font-semibold no-underline transition-colors hover:bg-foam/10 hover:text-foam",
                         active ? "bg-foam/10 text-foam" : "text-foam/90",
                       )}
+                      onClick={() => setOpenMenu(null)}
                     >
                       {location.name}
                     </Link>

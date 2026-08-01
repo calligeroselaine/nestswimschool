@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { locations, getLocationBySlug } from "@/lib/data/locations";
 import { programs } from "@/lib/data/programs";
@@ -92,7 +93,22 @@ export default async function LocationPage({
         tagline={location.cardDescription}
       />
 
-      <Section innerClassName="grid grid-cols-1 gap-12 pb-0 lg:grid-cols-[1.3fr_1fr]">
+      <Section innerClassName="pb-0">
+        <Reveal>
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px]">
+            <Image
+              src={location.image}
+              alt={`${location.name} — SwimNest`}
+              fill
+              sizes="(min-width: 1024px) 1180px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section innerClassName="grid grid-cols-1 gap-12 pt-10 pb-0 lg:grid-cols-[1.3fr_1fr]">
         <Reveal className="space-y-4 text-base font-light text-ink/80">
           {Content && <Content />}
         </Reveal>
