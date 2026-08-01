@@ -48,10 +48,6 @@ export default function Hero() {
         }}
       />
 
-      <p className="absolute bottom-[0.9rem] left-5 z-[2] text-2xs tracking-[0.08em] text-foam/45 uppercase md:left-14">
-        Sample clip for concept review only &middot; licensed footage to replace before launch
-      </p>
-
       <div className="relative z-[2] max-w-[1180px] px-5 pt-24 pb-12 md:px-14 md:pt-40 md:pb-18">
         <p className="mb-[1.1rem] flex items-center gap-[0.6em] text-2xs font-bold tracking-[0.16em] text-sunlit uppercase before:h-px before:w-7 before:bg-current before:opacity-60">
           Sydney&rsquo;s Northern Beaches
