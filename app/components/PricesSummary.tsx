@@ -23,7 +23,10 @@ export default function PricesSummary() {
           >
             <span className="font-display text-md uppercase">{program.shortName}</span>
             <span className="flex items-center gap-4 text-sm text-ink/70">
-              {program.pricingNote ?? `From ${program.pricing[0]?.price ?? ""}`}
+              {program.fromPrice ??
+                (program.pricing.length > 0
+                  ? `From ${program.pricing[0].price}`
+                  : program.pricingNote)}
               <span aria-hidden="true" className="text-accent-strong">
                 →
               </span>

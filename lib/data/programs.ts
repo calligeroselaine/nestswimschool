@@ -13,6 +13,8 @@ export type Program = {
   audience: string;
   pricing: PricingRow[];
   pricingNote?: string;
+  /** Short "from" price for the homepage summary row — falls back to pricing[0] if omitted. */
+  fromPrice?: string;
   featured?: boolean;
 };
 
@@ -42,10 +44,16 @@ export const programs: Program[] = [
     audience:
       "Focused, personalised lessons for swimmers who benefit from undivided coaching attention — one student or two.",
     pricing: [
-      { label: "Rockpools — 30–45 min", price: "$70–$90 / session" },
-      { label: "Terrey Hills / Brookvale — 30–45 min", price: "$90–$120 / session" },
-      { label: "Residential (your pool) — 30–60 min", price: "$100–$150 / session" },
+      { label: "Rockpools — 30 min", price: "$70 solo · $40pp shared" },
+      { label: "Rockpools — 45 min", price: "$90 solo · $55pp shared" },
+      { label: "Terrey Hills / Brookvale — 30 min", price: "$90 solo · $50pp shared" },
+      { label: "Terrey Hills / Brookvale — 45 min", price: "$120 solo · $65pp shared" },
+      { label: "Residential (your pool) — 30 min", price: "$100" },
+      { label: "Residential (your pool) — 45 min", price: "$120" },
+      { label: "Residential (your pool) — 60 min", price: "$150" },
     ],
+    pricingNote: "“Shared” (semi-private) pricing is per swimmer, for two swimmers of a similar level.",
+    fromPrice: "From $70 / session",
   },
   {
     slug: "group-classes",
@@ -57,7 +65,7 @@ export const programs: Program[] = [
       "Skill-matched peer classes that build technique and friendship.",
     audience:
       "Small, level-matched groups — class size and lesson length vary by skill level and location.",
-    pricing: [{ label: "Per term (12 weeks)", price: "$300" }],
+    pricing: [{ label: "Per term (12 weeks)", price: "$360" }],
   },
   {
     slug: "classes-holiday-intensive",

@@ -23,6 +23,7 @@ export default function Team() {
             name={member.name}
             role={member.role}
             bio={member.bio}
+            fullBio={member.fullBio}
             photo={member.photo}
           />
         ))}
