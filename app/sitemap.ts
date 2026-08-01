@@ -27,5 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...programRoutes, ...locationRoutes];
+  const legalRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${siteUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${siteUrl}/terms-and-conditions`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+  ];
+
+  return [...staticRoutes, ...programRoutes, ...locationRoutes, ...legalRoutes];
 }

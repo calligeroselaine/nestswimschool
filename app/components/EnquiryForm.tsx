@@ -1,6 +1,7 @@
 "use client";
 
 import { cloneElement, isValidElement, useState, type ReactElement } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -122,7 +123,11 @@ export default function EnquiryForm() {
 
       <p className="text-xs text-foam/55">
         By submitting this form you agree to be contacted by SwimNest about your enquiry. Your
-        details are only ever used to get back to you.
+        details are only ever used to get back to you — see our{" "}
+        <Link href="/privacy-policy" className="text-sunlit underline">
+          Privacy Policy
+        </Link>
+        .
       </p>
 
       <Button type="submit" disabled={isSubmitting} className="mt-2">

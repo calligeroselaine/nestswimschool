@@ -58,7 +58,15 @@ export default function Footer() {
         </FooterColumn>
       </div>
 
-      <span className="text-foam/70">&copy; {new Date().getFullYear()} SwimNest Swim School</span>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-foam/70">
+        <span>&copy; {new Date().getFullYear()} SwimNest Swim School</span>
+        <Link href="/privacy-policy" className="text-foam/60 no-underline hover:text-foam">
+          Privacy Policy
+        </Link>
+        <Link href="/terms-and-conditions" className="text-foam/60 no-underline hover:text-foam">
+          Terms &amp; Conditions
+        </Link>
+      </div>
     </footer>
   );
 }
