@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "nestswimschool",
+      "name": "nestswim-verify",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start", "--prefix", "/Users/elainecalligeros/websites project folder/nestswimschool", "--", "--port", "4173"],
       "port": 4173

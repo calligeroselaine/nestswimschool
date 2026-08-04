@@ -1,12 +1,10 @@
 import Reveal from "./Reveal";
 import Section from "./Section";
 import SectionHeading from "./SectionHeading";
-import TestimonialCard from "./TestimonialCard";
+import TestimonialsCarousel from "./TestimonialsCarousel";
 import { testimonials } from "@/lib/data/testimonials";
 
 export default function Testimonials() {
-  const featured = testimonials.slice(0, 3);
-
   return (
     <Section id="families">
       <Reveal>
@@ -16,15 +14,8 @@ export default function Testimonials() {
         />
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {featured.map((testimonial) => (
-          <TestimonialCard
-            key={testimonial.name}
-            quote={testimonial.quote}
-            name={testimonial.name}
-            location={testimonial.location}
-          />
-        ))}
+      <Reveal>
+        <TestimonialsCarousel testimonials={testimonials} />
       </Reveal>
     </Section>
   );
