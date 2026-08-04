@@ -1,5 +1,6 @@
 import Hero from "./components/Hero";
 import TrustStats from "./components/TrustStats";
+import Flexibility from "./components/Flexibility";
 import ProgramsGrid from "./components/ProgramsGrid";
 import PricesSummary from "./components/PricesSummary";
 import Team from "./components/Team";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStats />
+      <Flexibility />
       <ProgramsGrid />
       <PricesSummary />
       <Team />
