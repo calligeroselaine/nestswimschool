@@ -44,11 +44,11 @@ export const locations: Location[] = [
   {
     slug: "locations-brookvale",
     name: "Brookvale",
-    displayHeading: "NS Swim School – Brookvale",
+    displayHeading: "Brookvale Swim School",
     eyebrow: "Location",
     cardDescription: "Central and easy to reach, with dedicated learner pools.",
     description:
-      "Lessons held at our partner venue, NS Swim School in Brookvale — an indoor heated pool central to the Northern Beaches.",
+      "Lessons held at Brookvale Swim School — an indoor heated pool central to the Northern Beaches.",
     address: {
       street: "9B Green St",
       suburb: "Brookvale",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -58,14 +59,21 @@ export default function Nav() {
           "bg-ink/82 py-[0.9rem] shadow-[0_1px_0_var(--color-line-on-dark)] backdrop-blur-md",
       )}
     >
-      <Link
-        href="/"
-        className="flex items-baseline gap-1.5 font-display text-lg tracking-wide uppercase no-underline"
-      >
-        SwimNest
-        <small className="font-accent text-[0.7rem] font-normal text-sunlit italic normal-case">
-          swim school
-        </small>
+      <Link href="/" className="flex items-center gap-2.5 no-underline">
+        <Image
+          src="/images/logo-icon.png"
+          alt=""
+          width={183}
+          height={112}
+          priority
+          className="h-9 w-auto md:h-10"
+        />
+        <span className="flex items-baseline gap-1.5 font-display text-lg tracking-wide uppercase">
+          SwimNest
+          <small className="font-accent text-[0.7rem] font-normal text-sunlit italic normal-case">
+            swim school
+          </small>
+        </span>
       </Link>
 
       <ul ref={desktopNavRef} className="hidden items-center gap-6 md:flex lg:gap-8">

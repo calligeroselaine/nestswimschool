@@ -22,7 +22,7 @@ export default function PricingTable({
           {rows.map((row) => (
             <tr key={row.label} className="border-b border-line-on-light last:border-b-0">
               <td className="px-6 py-4 text-sm text-ink/80">{row.label}</td>
-              <td className="px-6 py-4 text-right font-display text-md text-ink tabular-nums">
+              <td className="px-6 py-4 text-right text-sm font-normal text-ink tabular-nums">
                 {row.price}
               </td>
             </tr>
