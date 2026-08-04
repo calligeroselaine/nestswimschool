@@ -4,7 +4,7 @@ import Section from "./Section";
 const stats = [
   { num: "16+", label: "Years of coaching experience, led by our head coach Irina" },
   { num: "4", label: "Locations across Terrey Hills, Brookvale & the Northern Beaches" },
-  { num: "5", label: "Programs, from first splashes to open-water Ocean Skills" },
+  { num: "6", label: "Programs, from first splashes to open-water Ocean Skills" },
   { num: "1:1", label: "Private & small-group lessons, matched to every learner" },
 ];
 

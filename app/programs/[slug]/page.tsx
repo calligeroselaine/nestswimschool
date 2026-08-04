@@ -17,6 +17,7 @@ import PrivateClassesContent from "../_content/private-classes";
 import GroupClassesContent from "../_content/group-classes";
 import HolidayIntensiveContent from "../_content/classes-holiday-intensive";
 import StrokeCorrectionContent from "../_content/classes-stroke-correction";
+import ParentBubContent from "../_content/classes-parent-bub";
 
 const contentBySlug: Record<string, React.ComponentType> = {
   "classes-ocean-skills": OceanSkillsContent,
@@ -24,6 +25,7 @@ const contentBySlug: Record<string, React.ComponentType> = {
   "group-classes": GroupClassesContent,
   "classes-holiday-intensive": HolidayIntensiveContent,
   "classes-stroke-correction": StrokeCorrectionContent,
+  "classes-parent-bub": ParentBubContent,
 };
 
 export function generateStaticParams() {

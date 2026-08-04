@@ -55,7 +55,7 @@ export const locations: Location[] = [
       state: "NSW",
       postcode: "2100",
     },
-    programSlugs: ["private-classes", "group-classes"],
+    programSlugs: ["private-classes", "group-classes", "classes-parent-bub"],
     image: "/images/locations/brookvale.webp",
   },
   {

@@ -100,6 +100,21 @@ export const programs: Program[] = [
     pricingNote: "Pricing on enquiry — get in touch for current rates.",
     image: "/images/programs/classes-stroke-correction.jpg",
   },
+  {
+    slug: "classes-parent-bub",
+    name: "Free Parent & Bub Program",
+    shortName: "Parent & Bub",
+    tag: "Free Program",
+    tagline: "A strong start in water, for life — free for babies 4–8 months.",
+    cardDescription:
+      "Free parent-education classes for babies 4–8 months. Sundays 8am at Brookvale — limited spots.",
+    audience:
+      "For parents and babies aged 4–8 months. SwimNest is the only Northern Beaches swim school offering this free program.",
+    pricing: [],
+    pricingNote: "Free — limited spots each term.",
+    fromPrice: "Free",
+    image: "/images/programs/classes-parent-bub.jpg",
+  },
 ];
 
 export function getProgramBySlug(slug: string): Program | undefined {

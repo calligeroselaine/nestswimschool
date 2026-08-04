@@ -13,7 +13,7 @@ export default function ProgramsGrid() {
       <Reveal>
         <SectionHeading
           title="Every swimmer learns differently."
-          description="Five pathways, one goal — real progress that feels engaging, supportive and fun, whichever way your child learns best."
+          description="Six pathways, one goal — real progress that feels engaging, supportive and fun, whichever way your child learns best."
         />
       </Reveal>
 
@@ -28,7 +28,7 @@ export default function ProgramsGrid() {
         />
       </Reveal>
 
-      <Reveal className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <Reveal className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map((program) => (
           <ProgramCard
             key={program.slug}
