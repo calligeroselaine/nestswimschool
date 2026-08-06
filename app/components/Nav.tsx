@@ -59,7 +59,7 @@ export default function Nav() {
           "bg-ink/82 py-[0.9rem] shadow-[0_1px_0_var(--color-line-on-dark)] backdrop-blur-md",
       )}
     >
-      <Link href="/" className="flex items-center gap-2.5 no-underline">
+      <Link href="/" className="flex flex-shrink-0 items-center gap-2.5 no-underline">
         <Image
           src="/images/logo-icon.png"
           alt=""
@@ -176,13 +176,15 @@ export default function Nav() {
         </li>
       </ul>
 
-      <div className="flex items-center gap-3">
-        <Button href="/#enquire" size="sm">
-          Book a Free Trial
-        </Button>
+      <div className="flex flex-shrink-0 items-center gap-3">
+        <div className="hidden sm:block">
+          <Button href="/#enquire" size="sm">
+            Book a Free Trial
+          </Button>
+        </div>
         <button
           type="button"
-          className="grid h-9 w-9 place-items-center rounded-full border border-foam/30 text-foam md:hidden"
+          className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-foam/30 text-foam md:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav-panel"
@@ -197,6 +199,14 @@ export default function Nav() {
           id="mobile-nav-panel"
           className="absolute top-full right-0 left-0 flex flex-col gap-1 border-t border-line-on-dark bg-ink/97 p-5 backdrop-blur-md md:hidden"
         >
+          <Button
+            href="/#enquire"
+            size="sm"
+            className="mb-3 w-full sm:hidden"
+            onClick={() => setMobileOpen(false)}
+          >
+            Book a Free Trial
+          </Button>
           <MobileSection title="Programs">
             {programs.map((program) => {
               const href = `/programs/${program.slug}`;
