@@ -45,12 +45,23 @@ export const metadata: Metadata = {
     description:
       "Patient, personalised swim lessons across Sydney's Northern Beaches — Terrey Hills, Brookvale, ocean rockpools and your own backyard pool.",
     url: SITE_URL,
+    locale: "en_AU",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SwimNest Swim School — Small Classes. Big Confidence.",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SwimNest — Small Classes. Big Confidence.",
     description:
       "Patient, personalised swim lessons across Sydney's Northern Beaches.",
+    images: ["/og-image.jpg"],
   },
 };
 

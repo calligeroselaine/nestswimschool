@@ -49,10 +49,14 @@ export async function generateMetadata({
       title: `${program.name} | SwimNest`,
       description: program.tagline,
       url,
+      images: [
+        { url: "/og-image.jpg", width: 1200, height: 630, alt: "SwimNest Swim School", type: "image/jpeg" },
+      ],
     },
     twitter: {
       title: `${program.name} | SwimNest`,
       description: program.tagline,
+      images: ["/og-image.jpg"],
     },
   };
 }

@@ -45,10 +45,14 @@ export async function generateMetadata({
       title: `${location.name} | SwimNest`,
       description: location.cardDescription,
       url,
+      images: [
+        { url: "/og-image.jpg", width: 1200, height: 630, alt: "SwimNest Swim School", type: "image/jpeg" },
+      ],
     },
     twitter: {
       title: `${location.name} | SwimNest`,
       description: location.cardDescription,
+      images: ["/og-image.jpg"],
     },
   };
 }
