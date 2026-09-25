@@ -88,6 +88,17 @@ export default function Footer() {
         <Link href="/terms-and-conditions" className="text-foam/60 no-underline hover:text-foam">
           Terms &amp; Conditions
         </Link>
+        <span className="text-foam/70">
+          Website by{" "}
+          <a
+            href="https://gevantage.com.au"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foam/70 no-underline hover:text-foam"
+          >
+            Gevantage
+          </a>
+        </span>
       </div>
     </footer>
   );
