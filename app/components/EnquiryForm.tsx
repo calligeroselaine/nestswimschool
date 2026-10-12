@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "./Button";
 import { programs } from "@/lib/data/programs";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name."),
@@ -19,11 +20,15 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Used only when the server can't be reached (so it can't supply the message).
+const SEND_FAILED_FALLBACK = `Sorry, your enquiry could not be sent. Please try again in a moment, or email ${CONTACT_EMAIL} directly.`;
+
 const inputClass =
   "w-full rounded-xl border border-line-on-dark bg-foam/5 px-4 py-3 text-sm text-foam placeholder:text-foam/40 outline-none transition-colors focus:border-sunlit aria-invalid:border-red-300";
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(SEND_FAILED_FALLBACK);
   const {
     register,
     handleSubmit,
@@ -39,10 +44,18 @@ export default function EnquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      if (!res.ok) throw new Error("request failed");
+      if (!res.ok) {
+        // The server supplies the message (it knows the recipient address).
+        const data = (await res.json().catch(() => null)) as { error?: string } | null;
+        setErrorMessage(data?.error ?? SEND_FAILED_FALLBACK);
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       reset();
     } catch {
+      // Network failure: the server was unreachable, so use the fallback text.
+      setErrorMessage(SEND_FAILED_FALLBACK);
       setStatus("error");
     }
   };
@@ -117,7 +130,7 @@ export default function EnquiryForm() {
 
       {status === "error" && (
         <p role="alert" className="text-sm text-red-300">
-          Something went wrong sending your enquiry. Please try again shortly.
+          {errorMessage}
         </p>
       )}
 

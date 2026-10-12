@@ -40,8 +40,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("[enquiry] failed to send", error);
+    const toEmail = process.env.ENQUIRY_TO_EMAIL;
     return NextResponse.json(
-      { error: "Something went wrong sending your enquiry. Please try again shortly." },
+      {
+        error: `Sorry, your enquiry could not be sent. Please try again in a moment${
+          toEmail ? `, or email ${toEmail} directly` : ""
+        }.`,
+      },
       { status: 502 },
     );
   }
