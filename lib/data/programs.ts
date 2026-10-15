@@ -46,16 +46,17 @@ export const programs: Program[] = [
     audience:
       "Focused, personalised lessons for swimmers who benefit from undivided coaching attention — one student or two.",
     pricing: [
-      { label: "Rockpools — 30 min", price: "$70 solo · $40pp shared" },
-      { label: "Rockpools — 45 min", price: "$90 solo · $55pp shared" },
-      { label: "Terrey Hills / Brookvale — 30 min", price: "$90 solo · $50pp shared" },
-      { label: "Terrey Hills / Brookvale — 45 min", price: "$120 solo · $65pp shared" },
-      { label: "Residential (your pool) — 30 min", price: "$100" },
-      { label: "Residential (your pool) — 45 min", price: "$120" },
-      { label: "Residential (your pool) — 60 min", price: "$150" },
+      { label: "Indoor pool (Terrey Hills / Brookvale) — 30 min", price: "$95 private · $53pp semi-private" },
+      { label: "Indoor pool (Terrey Hills / Brookvale) — 45 min", price: "$130 private · $70pp semi-private" },
+      { label: "Ocean pool (Rockpools) — 30 min", price: "$80 private · $45pp semi-private" },
+      { label: "Ocean pool (Rockpools) — 45 min", price: "$100 private · $60pp semi-private" },
+      { label: "Residential (your pool) — 30 min", price: "$105" },
+      { label: "Residential (your pool) — 45 min", price: "$135" },
+      { label: "Residential (your pool) — 60 min", price: "$160" },
     ],
-    pricingNote: "“Shared” (semi-private) pricing is per swimmer, for two swimmers of a similar level.",
-    fromPrice: "From $70 / session",
+    pricingNote:
+      "Semi-private pricing is per swimmer, for two swimmers of a similar level. All fees are GST-inclusive, with no payment surcharge. Ongoing lessons are paid by monthly direct debit, based on the number of scheduled lessons in the month.",
+    fromPrice: "From $80 / session",
     image: "/images/programs/private-classes.jpg",
   },
   {
@@ -68,7 +69,13 @@ export const programs: Program[] = [
       "Skill-matched peer classes that build technique and friendship.",
     audience:
       "Small, level-matched groups — class size and lesson length vary by skill level and location.",
-    pricing: [{ label: "Per term (12 weeks)", price: "$360" }],
+    pricing: [
+      { label: "Group lesson", price: "$32 per lesson" },
+      { label: "Baby classes (8–24 months)", price: "$25 per lesson" },
+    ],
+    pricingNote:
+      "All fees are GST-inclusive, with no payment surcharge. Ongoing lessons are paid by monthly direct debit, based on the number of scheduled lessons in the month.",
+    fromPrice: "From $25 / lesson",
     image: "/images/programs/group-classes.jpg",
   },
   {
