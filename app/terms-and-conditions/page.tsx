@@ -58,13 +58,13 @@ export default function TermsPage() {
 
           <h2 className={h2}>Payments</h2>
           <p className={p}>
-            Lesson fees are charged fortnightly via direct debit (a fee of 1.7% for debit and
-            credit cards will apply) or upfront for 12 weeks (10 weeks of school term + 2 weeks
-            of holidays) via bank transfer.
+            Ongoing lessons are paid by monthly direct debit. The monthly amount is based on the
+            number of scheduled lessons in that month. All fees are GST-inclusive and no
+            additional payment surcharge applies.
           </p>
           <p className={p}>
-            By enrolling, families authorise SwimNest to process recurring fortnightly payments
-            using the nominated payment method.
+            By enrolling, families authorise SwimNest to process recurring monthly payments using
+            the nominated payment method.
           </p>
           <p className={p}>
             Failed or overdue payments may incur processing fees and may result in suspension of

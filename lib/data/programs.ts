@@ -89,8 +89,8 @@ export const programs: Program[] = [
     audience:
       "Runs during school holidays at Terrey Hills, 11am–3pm — a concentrated block of lessons for faster progress.",
     pricing: [
-      { label: "4 × 20 min lessons", price: "$200" },
-      { label: "4 × 30 min lessons", price: "$250" },
+      { label: "4 × 20 min lessons", price: "$220" },
+      { label: "4 × 30 min lessons", price: "$270" },
     ],
     image: "/images/programs/classes-holiday-intensive.jpg",
   },
